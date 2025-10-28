@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Placement Predictor</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f9fafb; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #333; }
+        .stats { text-align: center; margin-bottom: 30px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input, select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎓 Student Placement Prediction</h2>
+        
+        <div class="stats">
+            <p><b>Placed Students:</b> {{ placed }}</p>
+            <p><b>Not Placed Students:</b> {{ not_placed }}</p>
+            <p><b>Placement Rate:</b> {{ rate }}%</p>
+        </div>
+
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label>IQ</label>
+                <input type="number" name="IQ" min="40" max="160" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label>Previous Semester Result (0–10)</label>
+                <input type="number" name="Prev_Sem_Result" min="0" max="10" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label>CGPA (0–10)</label>
+                <input type="number" name="CGPA" min="0" max="10" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label>Academic Performance (0–10)</label>
+                <input type="number" name="Academic_Performance" min="0" max="10" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label>Internship Experience</label>
+                <select name="Internship_Experience">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Extra Curricular Score (0–10)</label>
+                <input type="number" name="Extra_Curricular_Score" min="0" max="10" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label>Communication Skills (0–10)</label>
+                <input type="number" name="Communication_Skills" min="0" max="10" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label>Projects Completed (0–10)</label>
+                <input type="number" name="Projects_Completed" min="0" max="10" step="1" required>
+            </div>
+            <button type="submit">Predict Placement</button>
+        </form>
+    </div>
+</body>
+</html>
